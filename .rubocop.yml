@@ -13,5 +13,5 @@ AllCops:
     - 'Gemfile'
     - 'Rakefile'
 
-Documentation:
+Style/Documentation:
   Enabled: false
