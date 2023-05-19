@@ -1,5 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Note, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'バリデーション' do
+    context '正常な場合' do
+      it 'バリデーションを通過' do
+        note = Note.new(title: 'テスト')
+        expect(note).to be_valid
+      end
+    end
+  end
 end
