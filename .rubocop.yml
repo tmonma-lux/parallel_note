@@ -9,6 +9,9 @@ AllCops:
     - 'public/**/*'
     - 'storage/**/*'
     - 'tmp/**/*'
+    - 'config.ru'
+    - 'Gemfile'
+    - 'Rakefile'
 
 Documentation:
   Enabled: false
