@@ -7,6 +7,25 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    models:
+      note: メモ
+      phrase: 語句
+    attributes:
+      note:
+        id: ID
+        title: タイトル
+        text_en: 原文
+        text_ja: 対訳
+        free_text: 自由欄
+        created_at: 登録日時
+        updated_at: 更新日時
+      phrase:
+        id: ID
+        note_id: メモID
+        expression_en: 英語句
+        expression_en: 日本語句
+        created_at: 登録日時
+        updated_at: 更新日時
   date:
     abbr_day_names:
     - 日
@@ -180,4 +199,7 @@ ja:
       default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
+      date: "%Y/%m/%d"
     pm: 午後
+  tags_on:
+    tag: タグ
