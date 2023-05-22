@@ -5,11 +5,14 @@
 - Ruby 3.2.2
 - Rails 7.0.4.3
 - PostgreSQL 14.7
+
 ### Gem
 - slim-rails 3.6.2
 - bootstrap 5.2.3
 - rspec-rails 6.0.2
+- factory_bot_rails 6.2.0
 - acts-as-taggable-on (導入予定)
 - kaminari (導入予定)
+
 ### jQuery
 - Tag-it
