@@ -1,2 +1,15 @@
-h1 Phrases#index
-p Find me in app/views/phrases/index.html.slim
+h1 語句一覧
+
+div
+  table
+    thead
+      tr
+        th= Phrase.human_attribute_name(:expression_en)
+        th= Phrase.human_attribute_name(:expression_ja)
+        th メモタイトル
+    tbody
+      - @phrases.each do |phrase|
+        tr
+          td= phrase.expression_en
+          td= phrase.expression_ja
+          td= phrase.note.title
