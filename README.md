@@ -11,7 +11,7 @@
 - bootstrap 5.2.3
 - rspec-rails 6.0.2
 - factory_bot_rails 6.2.0
-- acts-as-taggable-on (導入予定)
+- acts-as-taggable-on 9.0.1
 - kaminari (導入予定)
 
 ### jQuery
