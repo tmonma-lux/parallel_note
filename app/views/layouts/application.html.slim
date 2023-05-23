@@ -9,4 +9,8 @@ html
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
   body
-    = yield
+    header
+      nav.navbar.navbar-expand-md.navbar-light style="background-color: #c9daf8;"
+        .navbar-brand.px-3 ParallelNote
+    .container
+      = yield
