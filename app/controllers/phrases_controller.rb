@@ -1,5 +1,5 @@
 class PhrasesController < ApplicationController
   def index
-    @phrases = Phrase.all
+    @phrases = Phrase.eager_load(:note).select('phrases.*, notes.title')
   end
 end
