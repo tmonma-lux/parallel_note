@@ -1,25 +1,31 @@
-h1 メモの新規作成
+h1.mt-2 メモの新規作成
 
 = form_with model: @note_form, url: notes_path, local: true do |f|
-  div
-    = f.text_field :title
-    = f.submit '保存'
+  .row.mt-3
+    .col
+      = f.text_field :title, class: "form-control", placeholder: "タイトルを入力してください"
+    = f.submit '保存', class: "btn btn-primary me-2", style: "width:100px"
 
-  div
-    div
-      = f.label :text_en, Note.human_attribute_name(:text_en)
-      = f.text_area :text_en, rows: 10, style: "width:100%"
-    div
-      = f.label :text_ja, Note.human_attribute_name(:text_ja)
-      = f.text_area :text_ja, rows: 10, style: "width:100%"
+  .row.mt-4
+    .col
+      .text-center.h2
+        = f.label :text_en, Note.human_attribute_name(:text_en)
+      = f.text_area :text_en, rows: 10, style: "width:100%", class: "form-control"
+    .col
+      .text-center.h2
+        = f.label :text_ja, Note.human_attribute_name(:text_ja)
+      = f.text_area :text_ja, rows: 10, style: "width:100%", class: "form-control"
 
-  div
-    div
+  div.mt-4
+    .h2
       = I18n.t("activerecord.models.phrase")
-    div
-      = f.text_field :expression_en, style: "width:100%"
-      = f.text_field :expression_ja, style: "width:100%"
+    .row
+      .col
+        = f.text_field :expression_en, class: "form-control"
+      .col
+        = f.text_field :expression_ja, class: "form-control"
 
-  div
-    = f.label :free_text, Note.human_attribute_name(:free_text)
-    = f.text_area :free_text, rows: 4, style: "width:100%"
+  div.my-4
+    .h2
+      = f.label :free_text, Note.human_attribute_name(:free_text)
+    = f.text_area :free_text, rows: 4, class: "form-control"
