@@ -13,4 +13,6 @@ html
       nav.navbar.navbar-expand-md.navbar-light style="background-color: #c9daf8;"
         .navbar-brand.px-3 ParallelNote
     .container
+      - if flash.notice.present?
+        .alert.alert-success= flash.notice
       = yield
