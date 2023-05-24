@@ -1,0 +1,15 @@
+h1.mt-2 語句一覧
+
+div
+  table.table.table-hover
+    thead
+      tr
+        th= Phrase.human_attribute_name(:expression_en)
+        th= Phrase.human_attribute_name(:expression_ja)
+        th メモタイトル
+    tbody
+      - @phrases.each do |phrase|
+        tr
+          td= phrase.expression_en
+          td= phrase.expression_ja
+          td= phrase.note.title

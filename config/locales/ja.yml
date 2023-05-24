@@ -22,8 +22,8 @@ ja:
       phrase:
         id: ID
         note_id: メモID
-        expression_en: 英語句
-        expression_en: 日本語句
+        expression_en: 語句
+        expression_ja: 意味
         created_at: 作成日
         updated_at: 更新日
   date:
