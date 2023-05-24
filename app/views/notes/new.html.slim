@@ -1,1 +1,25 @@
 h1 メモの新規作成
+
+= form_with model: @note_form, url: notes_path, local: true do |f|
+  div
+    = f.text_field :title
+    = f.submit '保存'
+
+  div
+    div
+      = f.label :text_en, Note.human_attribute_name(:text_en)
+      = f.text_area :text_en, rows: 10, style: "width:100%"
+    div
+      = f.label :text_ja, Note.human_attribute_name(:text_ja)
+      = f.text_area :text_ja, rows: 10, style: "width:100%"
+
+  div
+    div
+      = I18n.t("activerecord.models.phrase")
+    div
+      = f.text_field :expression_en, style: "width:100%"
+      = f.text_field :expression_ja, style: "width:100%"
+
+  div
+    = f.label :free_text, Note.human_attribute_name(:free_text)
+    = f.text_area :free_text, rows: 4, style: "width:100%"
