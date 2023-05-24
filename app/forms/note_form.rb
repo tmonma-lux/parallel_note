@@ -9,6 +9,7 @@ class NoteForm
   attribute :free_text, :string
   attribute :expression_en, :string
   attribute :expression_ja, :string
+  attribute :tag_list
 
   with_options presence: true do
     validates :title
@@ -21,6 +22,8 @@ class NoteForm
 
     ActiveRecord::Base.transaction do
       note = Note.create(title:, text_en:, text_ja:, free_text:)
+      note.tag_list.add tag_list.split(',')
+      note.save
       Phrase.create(expression_en:, expression_ja:, note:)
     end
   end
