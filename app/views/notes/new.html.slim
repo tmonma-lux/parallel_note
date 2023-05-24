@@ -6,6 +6,12 @@ h1.mt-2 メモの新規作成
       = f.text_field :title, class: "form-control", placeholder: "タイトルを入力してください"
     = f.submit '保存', class: "btn btn-primary me-2", style: "width:100px"
 
+  .row.mt-3
+    .col-1.d-flex.align-items-center
+      | タグ：
+    .col-6
+      = f.text_field :tag_list, class: "form-control", class: "col-6 form-control"
+
   .row.mt-4
     .col
       .text-center.h2
