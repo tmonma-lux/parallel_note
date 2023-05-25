@@ -17,13 +17,13 @@ class NoteForm
 
     ActiveRecord::Base.transaction do
       # メモを作成
-      note = Note.create(title:, text_en:, text_ja:, free_text:)
+      note = Note.create!(title:, text_en:, text_ja:, free_text:)
       # Tagを登録
       note.tag_list.add tag_list.split(',')
-      note.save
+      note.save!
       # 語句を登録
       phrases.values.each do |phrase_attrs|
-        note.phrases << Phrase.create(phrase_attrs)
+        note.phrases << Phrase.create!(phrase_attrs)
       end
     end
   end
