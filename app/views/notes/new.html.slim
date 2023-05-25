@@ -1,5 +1,10 @@
 h1.mt-2 メモの新規作成
 
+- if @note_form.errors.present?
+    ul
+      - @note_form.errors.full_messages.each do |message|
+        li= message
+
 = form_with model: @note_form, url: notes_path, local: true do |f|
   .row.mt-3
     .col
