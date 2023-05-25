@@ -15,7 +15,7 @@ class NotesController < ApplicationController
     if @note_form.save
       redirect_to root_url, notice: 'メモの保存が完了しました。'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
