@@ -30,15 +30,12 @@ h1.mt-2 メモの新規作成
   div.mt-4
     .h2
       = I18n.t("activerecord.models.phrase")
-
-    - 3.times do |index|
-      div.row.mt-3
-        div.col
-          = f.fields_for :phrases, index: index do |phrase_fields|
-            = phrase_fields.text_field :expression_en, class: "form-control"
-        div.col
-          = f.fields_for :phrases, index: index do |phrase_fields|
-            = phrase_fields.text_field :expression_ja, class: "form-control"
+    - 3.times do
+      .row.mt-3
+        .col
+          = f.text_field 'phrases[][expression_en]', class: "form-control"
+        .col
+          = f.text_field 'phrases[][expression_ja]', class: "form-control"
 
   div.my-4
     .h2

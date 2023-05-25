@@ -23,8 +23,8 @@ class NoteForm
       note.tag_list.add tag_list.split(',')
       note.save!
       # 語句を登録
-      phrases.values.each do |phrase_attrs|
-        note.phrases.create!(phrase_attrs)
+      phrases.each do |phrase_attrs|
+        note.phrases.create!(phrase_attrs) if phrase_attrs[:expression_en].present?
       end
     end
   rescue ActiveRecord::RecordInvalid
@@ -34,7 +34,7 @@ class NoteForm
   private
 
   def validate_phrases
-    phrases.values.each do |phrase_attrs|
+    phrases.each do |phrase_attrs|
       if phrase_attrs[:expression_en].present? && phrase_attrs[:expression_ja].blank?
         errors.add(:base, "#{Phrase.human_attribute_name(:expression_en)}に対応する#{Phrase.human_attribute_name(:expression_ja)}を入力してください。")
       elsif phrase_attrs[:expression_en].blank? && phrase_attrs[:expression_ja].present?
