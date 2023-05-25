@@ -10,6 +10,7 @@ class NoteForm
   attribute :tag_list
 
   validates :title, presence: true
+  validates :text_en, presence: true
   validate :validate_phrases
 
   def save

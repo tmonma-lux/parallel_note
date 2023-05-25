@@ -13,5 +13,5 @@ div
         tr
           td= note.title
           td= render "notes/taglist", tag_list: note.tag_list
-          td= note.text_en&.truncate(50)
+          td= note.text_en.truncate(50)
           td= l note.created_at, format: :date
