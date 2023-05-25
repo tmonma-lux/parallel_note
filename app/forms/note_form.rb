@@ -1,7 +1,6 @@
 class NoteForm
   include ActiveModel::Model
   include ActiveModel::Attributes
-  include ActiveModel::Validations
 
   attribute :title, :string
   attribute :text_en, :string
