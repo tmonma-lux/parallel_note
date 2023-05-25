@@ -10,6 +10,7 @@ class NoteForm
   attribute :tag_list
 
   validates :title, presence: true
+  validate :validate_phrases
 
   def save
     return false if invalid?
@@ -28,4 +29,17 @@ class NoteForm
   rescue ActiveRecord::RecordInvalid
     false
   end
+
+  private
+
+  def validate_phrases
+    phrases.values.each do |phrase_attrs|
+      if phrase_attrs[:expression_en].present? && phrase_attrs[:expression_ja].blank?
+        errors.add(:base, "#{Phrase.human_attribute_name(:expression_en)}に対応する#{Phrase.human_attribute_name(:expression_ja)}を入力してください。")
+      elsif phrase_attrs[:expression_en].blank? && phrase_attrs[:expression_ja].present?
+        errors.add(:base, "#{Phrase.human_attribute_name(:expression_ja)}に対応する#{Phrase.human_attribute_name(:expression_en)}を入力してください。")
+      end
+    end
+  end
 end
+
