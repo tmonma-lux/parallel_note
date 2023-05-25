@@ -17,7 +17,7 @@ class NoteForm
 
     ActiveRecord::Base.transaction do
       # メモを作成
-      note = Note.create!(title:, text_en:, text_ja:, free_text:)
+      note = Note.new(title:, text_en:, text_ja:, free_text:)
       # Tagを登録
       note.tag_list.add tag_list.split(',')
       note.save!
