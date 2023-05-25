@@ -23,7 +23,7 @@ class NoteForm
       note.save!
       # 語句を登録
       phrases.values.each do |phrase_attrs|
-        note.phrases << Phrase.create!(phrase_attrs)
+        note.phrases.create!(phrase_attrs)
       end
     end
   end
