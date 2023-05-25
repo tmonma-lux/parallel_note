@@ -22,7 +22,7 @@ class NotesController < ApplicationController
   private
 
   def note_form_params
-    params.require(:note_form).permit(:title, :text_en, :text_ja, :free_text,
-                                      :expression_en, :expression_ja, :tag_list)
+    params.require(:note_form).permit(:title, :text_en, :text_ja, :free_text, :tag_list,
+                                      phrases: [:expression_en, :expression_ja])
   end
 end

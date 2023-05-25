@@ -7,24 +7,24 @@ class NoteForm
   attribute :text_en, :string
   attribute :text_ja, :string
   attribute :free_text, :string
-  attribute :expression_en, :string
-  attribute :expression_ja, :string
+  attribute :phrases
   attribute :tag_list
 
-  with_options presence: true do
-    validates :title
-    validates :expression_en
-    validates :expression_ja
-  end
+  validates :title, presence: true
 
   def save
     return false if invalid?
 
     ActiveRecord::Base.transaction do
+      # メモを作成
       note = Note.create(title:, text_en:, text_ja:, free_text:)
+      # Tagを登録
       note.tag_list.add tag_list.split(',')
       note.save
-      Phrase.create(expression_en:, expression_ja:, note:)
+      # 語句を登録
+      phrases.values.each do |phrase_attrs|
+        note.phrases << Phrase.create(phrase_attrs)
+      end
     end
   end
 end
