@@ -25,5 +25,7 @@ class NoteForm
         note.phrases.create!(phrase_attrs)
       end
     end
+  rescue ActiveRecord::RecordInvalid
+    false
   end
 end
