@@ -23,9 +23,9 @@ class NoteForm
       note.tag_list.add tag_list.split(',')
       note.save!
       # 語句を登録
-      phrases.each do |phrase_attrs|
-        note.phrases.create!(phrase_attrs) if phrase_attrs[:expression_en].present?
-      end
+      phrases.delete_if { |phrase_attrs| phrase_attrs[:expression_en].blank? }
+      phrases.map { |phrase_attrs| phrase_attrs.store(:note_id, note.id) }
+      Phrase.insert_all! phrases
     end
   rescue ActiveRecord::RecordInvalid
     false
