@@ -19,13 +19,15 @@ class NoteForm
     ActiveRecord::Base.transaction do
       # メモを作成
       note = Note.new(title:, text_en:, text_ja:, free_text:)
+      # 語句を登録
+      phrases.delete_if { |phrase_attrs| phrase_attrs[:expression_en].blank? }
+      if phrases.present?
+        phrases.map { |phrase_attrs| phrase_attrs.store(:note_id, note.id) }
+        Phrase.insert_all! phrases
+      end
       # Tagを登録
       note.tag_list.add tag_list.split(',')
       note.save!
-      # 語句を登録
-      phrases.delete_if { |phrase_attrs| phrase_attrs[:expression_en].blank? }
-      phrases.map { |phrase_attrs| phrase_attrs.store(:note_id, note.id) }
-      Phrase.insert_all! phrases
     end
   rescue ActiveRecord::RecordInvalid
     false
