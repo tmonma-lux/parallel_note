@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class NoteForm
   include ActiveModel::Model
   include ActiveModel::Attributes
@@ -38,11 +40,12 @@ class NoteForm
   def validate_phrases
     phrases.each do |phrase_attrs|
       if phrase_attrs[:expression_en].present? && phrase_attrs[:expression_ja].blank?
-        errors.add(:base, "#{NoteForm.human_attribute_name(:expression_en)}に対応する#{NoteForm.human_attribute_name(:expression_ja)}を入力してください")
+        errors.add(:base,
+                   "#{NoteForm.human_attribute_name(:expression_en)}に対応する#{NoteForm.human_attribute_name(:expression_ja)}を入力してください")
       elsif phrase_attrs[:expression_en].blank? && phrase_attrs[:expression_ja].present?
-        errors.add(:base, "#{NoteForm.human_attribute_name(:expression_ja)}に対応する#{NoteForm.human_attribute_name(:expression_en)}を入力してください")
+        errors.add(:base,
+                   "#{NoteForm.human_attribute_name(:expression_ja)}に対応する#{NoteForm.human_attribute_name(:expression_en)}を入力してください")
       end
     end
   end
 end
-
