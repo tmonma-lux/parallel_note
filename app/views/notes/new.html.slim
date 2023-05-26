@@ -29,7 +29,7 @@ h1.mt-2 メモの新規作成
 
   div.mt-4
     .h2
-      = I18n.t("activerecord.models.phrase")
+      = NoteForm.human_attribute_name(:phrases)
     - 3.times do |idx|
       .row.mt-3
         .col
