@@ -11,7 +11,7 @@ div
     tbody
       - @notes.each do |note|
         tr
-          td= note.title
+          td= link_to note.title, note
           td= render "notes/taglist", tags: note.tags
           td= note.text_en.truncate(50)
           td= l note.created_at, format: :date
