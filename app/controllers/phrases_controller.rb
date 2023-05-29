@@ -2,6 +2,6 @@
 
 class PhrasesController < ApplicationController
   def index
-    @phrases = Phrase.eager_load(:note)
+    @phrases = Phrase.preload(:note)
   end
 end
