@@ -5,6 +5,10 @@ class NotesController < ApplicationController
     @notes = Note.preload(:tags)
   end
 
+  def show
+    @note = Note.find(params[:id])
+  end
+
   def new
     @note_form = NoteForm.new
   end
