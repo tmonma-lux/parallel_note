@@ -4,7 +4,7 @@
 ## 開発環境
 - Ruby 3.2.2
 - Rails 7.0.4.3
-- PostgreSQL 14.7
+- MySQL 5.7.42
 
 ### Gem
 - slim-rails 3.6.2
