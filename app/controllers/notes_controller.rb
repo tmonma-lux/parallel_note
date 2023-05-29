@@ -2,7 +2,7 @@
 
 class NotesController < ApplicationController
   def index
-    @notes = Note.all.includes(:tags)
+    @notes = Note.preload(:tags)
   end
 
   def new
