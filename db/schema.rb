@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_22_010563) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_29_000937) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "notes", force: :cascade do |t|
     t.string "title", null: false
-    t.text "text_en"
+    t.text "text_en", null: false
     t.text "text_ja"
     t.text "free_text"
     t.datetime "created_at", null: false
