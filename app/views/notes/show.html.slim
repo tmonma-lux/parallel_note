@@ -1,0 +1,33 @@
+h1.mt-2= @note.title
+
+.d-flex.flex-row
+  | タグ：
+  = render "notes/taglist", tags: @note.tags
+
+.row.mt-4
+  .col
+    .text-center.h2= Note.human_attribute_name(:text_en)
+  .col
+    .text-center.h2= Note.human_attribute_name(:text_ja)
+.row
+  .col.flex
+    .form-control= simple_format(h(@note.text_en))
+  .col.flex
+    .form-control= simple_format(h(@note.text_ja))
+
+div.mt-4
+    .h2= NoteForm.human_attribute_name(:phrases)
+    - @note.phrases.each do |phrase|
+      .row.mt-3
+        .col
+          .form-control= phrase.expression_en
+        .col
+          .form-control= phrase.expression_ja
+
+div.my-4
+  .h2= Note.human_attribute_name(:free_text)
+  .form-control
+    - if @note.free_text.present?
+      = simple_format(h(@note.free_text))
+    - else
+      .gray_text= "記入なし"
