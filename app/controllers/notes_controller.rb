@@ -23,6 +23,13 @@ class NotesController < ApplicationController
     end
   end
 
+  def edit
+    note = Note.find(params[:id])
+    @note_form = NoteForm.new(title: note.title, text_en: note.text_en, text_ja: note.text_ja, 
+                              free_text: note.free_text, phrases: note.phrases,
+                              tag_list: note.tag_list.join(','))
+  end
+
   private
 
   def note_form_params
