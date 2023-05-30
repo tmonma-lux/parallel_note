@@ -31,9 +31,9 @@
     - 3.times do |idx|
       .row.mt-3
         .col
-          = f.text_field 'phrases[][expression_en]', class: "form-control", value: (note_form.phrases[idx][:expression_en] if note_form.phrases.present?)
+          = f.text_field 'phrases[][expression_en]', class: "form-control", value: (note_form.phrases[idx][:expression_en] if note_form.phrases[idx].present?)
         .col
-          = f.text_field 'phrases[][expression_ja]', class: "form-control", value: (note_form.phrases[idx][:expression_ja] if note_form.phrases.present?)
+          = f.text_field 'phrases[][expression_ja]', class: "form-control", value: (note_form.phrases[idx][:expression_ja] if note_form.phrases[idx].present?)
 
   div.my-4
     .h2
