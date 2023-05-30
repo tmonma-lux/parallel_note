@@ -24,10 +24,21 @@ class NotesController < ApplicationController
   end
 
   def edit
-    note = Note.find(params[:id])
-    @note_form = NoteForm.new(title: note.title, text_en: note.text_en, text_ja: note.text_ja, 
-                              free_text: note.free_text, phrases: note.phrases,
-                              tag_list: note.tag_list.join(','))
+    @note = Note.find(params[:id])
+    @note_form = NoteForm.new(title: @note.title, text_en: @note.text_en, text_ja: @note.text_ja, 
+                              free_text: @note.free_text, phrases: @note.phrases,
+                              tag_list: @note.tag_list.join(','))
+  end
+
+  def update
+    @note = Note.find(params[:id])
+    @note_form = NoteForm.new(note_form_params)
+
+    if @note_form.update(@note)
+      redirect_to notes_url, notice: 'メモの更新が完了しました。'
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private

@@ -19,10 +19,28 @@ class NoteForm
     return false if invalid?
 
     ActiveRecord::Base.transaction do
-      note = Note.new(title:, text_en:, text_ja:, free_text:)
-      # Tagを登録
-      note.tag_list.add tag_list.split(',')
-      note.save!
+      note = Note.create(title:, text_en:, text_ja:, free_text:, tag_list: tag_list.split(','))
+      # 語句とその意味がともに空欄のデータを削除
+      phrases.delete_if { |phrase_attrs| phrase_attrs[:expression_en].blank? && phrase_attrs[:expression_ja].blank? }
+      # 語句が存在している場合は登録
+      if phrases.present?
+        phrases.map { |phrase_attrs| phrase_attrs.store(:note_id, note.id) }
+        Phrase.insert_all! phrases
+      end
+    end
+    # 戻り値をif結果のfalseからtrueに変更
+    true
+  rescue ActiveRecord::RecordInvalid
+    false
+  end
+
+  def update(note)
+    return false if invalid?
+
+    ActiveRecord::Base.transaction do
+      note.update!(title:, text_en:, text_ja:, free_text:, tag_list: tag_list.split(','))
+      # すでに登録されている語句を削除
+      note.phrases.map(&:destroy!)
       # 語句とその意味がともに空欄のデータを削除
       phrases.delete_if { |phrase_attrs| phrase_attrs[:expression_en].blank? && phrase_attrs[:expression_ja].blank? }
       # 語句が存在している場合は登録
