@@ -3,7 +3,7 @@
       - note_form.errors.full_messages.each do |message|
         li= message
 
-= form_with model: note_form, url: notes_path, local: true do |f|
+= form_with model: note_form, url: url, method: method, local: true do |f|
   .row.mt-3
     .col
       = f.text_field :title, class: "form-control", placeholder: "タイトルを入力してください"
