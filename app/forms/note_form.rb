@@ -19,7 +19,7 @@ class NoteForm
     return false if invalid?
 
     ActiveRecord::Base.transaction do
-      note = Note.create(title:, text_en:, text_ja:, free_text:, tag_list: tag_list.split(','))
+      note = Note.create!(title:, text_en:, text_ja:, free_text:, tag_list: tag_list.split(','))
       # 語句とその意味がともに空欄のデータを削除
       phrases.delete_if { |phrase_attrs| phrase_attrs[:expression_en].blank? && phrase_attrs[:expression_ja].blank? }
       # 語句が存在している場合は登録
