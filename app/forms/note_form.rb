@@ -8,7 +8,7 @@ class NoteForm
   attribute :text_en, :string
   attribute :text_ja, :string
   attribute :free_text, :string
-  attribute :phrases
+  attribute :phrases, default: {}
   attribute :tag_list
 
   validates :title, presence: true
