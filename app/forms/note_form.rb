@@ -15,6 +15,22 @@ class NoteForm
   validates :text_en, presence: true
   validate :validate_phrases
 
+  def initialize(note = Note.new, **params)
+    # Noteモデル配下のPhraseデータをハッシュ配列に変換
+    phrase_params = note.phrases.map { |phrase|
+                    { expression_en: phrase.expression_en, expression_ja: phrase.expression_ja } }
+    
+    if params.empty?
+      params = { title: note.title, text_en: note.text_en, text_ja: note.text_ja,
+                 free_text: note.free_text, phrases: phrase_params,
+                 tag_list: note.tag_list.join(',')}
+    else
+      params['phrases'].map!(&:symbolize_keys)
+    end
+
+    super params
+  end
+
   def save
     return false if invalid?
 
