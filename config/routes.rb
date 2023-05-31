@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :notes, only: [:index, :show, :new, :create, :edit, :update]
+  resources :notes
   root to: 'notes#index'
   
   get 'phrases', to: 'phrases#index'
