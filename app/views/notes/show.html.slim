@@ -1,8 +1,8 @@
 .d-flex.justify-content-between.mt-2
   h1= @note.title
   .mt-2
-    = link_to "編集", edit_note_path, class: "btn btn-primary me-3", style: "width:80px"
-    = link_to "削除", @note, data: { turbo_method: :delete, turbo_confirm: "メモを削除します。よろしいですか？" }, class: "btn btn-danger", style: "width:80px"
+    = link_to "編集", edit_note_path, class: "btn btn-primary me-3 w80px"
+    = link_to "削除", @note, data: { turbo_method: :delete, turbo_confirm: "メモを削除します。よろしいですか？" }, class: "btn btn-danger w80px"
 
 .d-flex.flex-row
   | タグ：
