@@ -30,9 +30,9 @@ class NotesController < ApplicationController
 
   def update
     @note = Note.find(params[:id])
-    @note_form = NoteForm.new(**note_form_params)
+    @note_form = NoteForm.new(@note, **note_form_params)
 
-    if @note_form.update(@note)
+    if @note_form.save
       redirect_to notes_url, notice: 'メモの更新が完了しました。'
     else
       render :edit, status: :unprocessable_entity

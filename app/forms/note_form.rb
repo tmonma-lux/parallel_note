@@ -16,6 +16,7 @@ class NoteForm
   validate :validate_phrases
 
   def initialize(note = Note.new, **params)
+    @note = note
     # Noteモデル配下のPhraseデータをハッシュ配列に変換
     phrase_params = note.phrases.map { |phrase|
                     { expression_en: phrase.expression_en, expression_ja: phrase.expression_ja } }
@@ -35,33 +36,14 @@ class NoteForm
     return false if invalid?
 
     ActiveRecord::Base.transaction do
-      note = Note.create!(title:, text_en:, text_ja:, free_text:, tag_list: tag_list.split(','))
-      # 語句とその意味がともに空欄のデータを削除
-      phrases.delete_if { |phrase_attrs| phrase_attrs[:expression_en].blank? && phrase_attrs[:expression_ja].blank? }
-      # 語句が存在している場合は登録
-      if phrases.present?
-        phrases.map { |phrase_attrs| phrase_attrs.store(:note_id, note.id) }
-        Phrase.insert_all! phrases
-      end
-    end
-    # 戻り値をif結果のfalseからtrueに変更
-    true
-  rescue ActiveRecord::RecordInvalid
-    false
-  end
-
-  def update(note)
-    return false if invalid?
-
-    ActiveRecord::Base.transaction do
-      note.update!(title:, text_en:, text_ja:, free_text:, tag_list: tag_list.split(','))
+      @note.update!(title:, text_en:, text_ja:, free_text:, tag_list: tag_list.split(','))
       # すでに登録されている語句を削除
-      note.phrases.map(&:destroy!)
+      @note.phrases.map(&:destroy!)
       # 語句とその意味がともに空欄のデータを削除
       phrases.delete_if { |phrase_attrs| phrase_attrs[:expression_en].blank? && phrase_attrs[:expression_ja].blank? }
       # 語句が存在している場合は登録
       if phrases.present?
-        phrases.map { |phrase_attrs| phrase_attrs.store(:note_id, note.id) }
+        phrases.map { |phrase_attrs| phrase_attrs.store(:note_id, @note.id) }
         Phrase.insert_all! phrases
       end
     end
