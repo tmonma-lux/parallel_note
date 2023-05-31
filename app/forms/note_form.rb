@@ -8,26 +8,42 @@ class NoteForm
   attribute :text_en, :string
   attribute :text_ja, :string
   attribute :free_text, :string
-  attribute :phrases
+  attribute :phrases, default: {}
   attribute :tag_list
 
   validates :title, presence: true
   validates :text_en, presence: true
   validate :validate_phrases
 
+  def initialize(note = Note.new, **attributes)
+    @note = note
+    # Noteモデル配下のPhraseデータをハッシュ配列に変換
+    phrase_attrs = note.phrases.map { |phrase|
+                    { expression_en: phrase.expression_en, expression_ja: phrase.expression_ja } }
+    
+    if attributes.empty?
+      attributes = { title: note.title, text_en: note.text_en, text_ja: note.text_ja,
+                     free_text: note.free_text, phrases: phrase_attrs,
+                     tag_list: note.tag_list.join(',')}
+    else
+      attributes['phrases'].map!(&:symbolize_keys)
+    end
+
+    super attributes
+  end
+
   def save
     return false if invalid?
 
     ActiveRecord::Base.transaction do
-      note = Note.new(title:, text_en:, text_ja:, free_text:)
-      # Tagを登録
-      note.tag_list.add tag_list.split(',')
-      note.save!
+      @note.update!(title:, text_en:, text_ja:, free_text:, tag_list: tag_list.split(','))
+      # すでに登録されている語句を削除
+      @note.phrases.map(&:destroy!)
       # 語句とその意味がともに空欄のデータを削除
       phrases.delete_if { |phrase_attrs| phrase_attrs[:expression_en].blank? && phrase_attrs[:expression_ja].blank? }
       # 語句が存在している場合は登録
       if phrases.present?
-        phrases.map { |phrase_attrs| phrase_attrs.store(:note_id, note.id) }
+        phrases.map { |phrase_attrs| phrase_attrs.store(:note_id, @note.id) }
         Phrase.insert_all! phrases
       end
     end
