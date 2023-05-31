@@ -18,6 +18,9 @@ html
           li.nav-item.me-3= link_to 'メモ作成', new_note_path, class: 'nav-link'
           li.nav-item.me-3= link_to '語句一覧', phrases_path, class: 'nav-link'
     .container
-      - if flash.notice.present?
-        .alert.alert-success= flash.notice
+      .mt-2
+        - if flash.notice.present?
+          .alert.alert-success= flash.notice
+        - if flash.alert.present?
+          .alert.alert-danger= flash.alert
       = yield
