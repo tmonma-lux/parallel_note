@@ -39,6 +39,12 @@ class NotesController < ApplicationController
     end
   end
 
+  def destroy
+    note = Note.find(params[:id])
+    note.destroy
+    redirect_to notes_url, notice: 'メモを削除しました。', status: :see_other
+  end
+
   private
 
   def note_form_params
