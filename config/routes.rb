@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root to: 'notes#index'
   
   get 'phrases', to: 'phrases#index'
+
+  get '*path', controller: 'application', action: 'redirect_on_404'
 end
