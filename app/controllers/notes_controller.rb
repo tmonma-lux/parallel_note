@@ -10,8 +10,8 @@ class NotesController < ApplicationController
   end
 
   def search
-    @notes = Note.search(params[:keyword])
-    @keyword = params[:keyword]
+    @notes = Note.search(params[:query])
+    @query = params[:query]
   end
 
   def new
