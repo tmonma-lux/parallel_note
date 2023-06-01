@@ -9,6 +9,12 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
   end
 
+  def search
+    @notes = Note.search(params[:keyword])
+    @keyword = params[:keyword]
+    render :index, status: :unprocessable_entity
+  end
+
   def new
     @note_form = NoteForm.new
   end
