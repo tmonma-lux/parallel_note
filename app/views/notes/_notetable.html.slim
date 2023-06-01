@@ -1,7 +1,7 @@
 = form_with url: search_notes_path, method: :get, local: true do |f|
   .row.mt-3.w-50
     .col
-      = f.text_field :query, class: "form-control", value: query, placeholder: "タイトルやタグを入力"
+      = f.text_field :query, class: "form-control", value: query, required: true, placeholder: "タイトルやタグを入力"
     = f.submit "検索", class: "btn btn-primary me-2", name: nil, style: "width:100px"
 
 .mt-2
