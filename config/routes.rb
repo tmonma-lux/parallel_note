@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :notes
   root to: 'notes#index'
+  get 'search', to: 'notes#search'
   
   get 'phrases', to: 'phrases#index'
 
