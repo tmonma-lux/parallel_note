@@ -5,7 +5,11 @@ class Note < ApplicationRecord
 
   has_many :phrases, dependent: :destroy
 
-  def self.search(query)
-    where('title like?', "%#{query}%") | tagged_with(query)
+  def self.search(query, tags)
+    if tags.present?
+      where('title like?', "%#{query}%") & tagged_with(tags, any: true)
+    else
+      where('title like?', "%#{query}%")
+    end
   end
 end
