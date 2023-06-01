@@ -1,8 +1,15 @@
 = form_with url: search_notes_path, method: :get, local: true do |f|
   .row.mt-3.w-50
     .col
-      = f.text_field :query, class: "form-control", value: query, required: true, placeholder: "タイトルやタグを入力"
+      = f.text_field :query, class: "form-control", value: query, placeholder: "タイトルを入力"
     = f.submit "検索", class: "btn btn-primary me-2", name: nil, style: "width:100px"
+
+  .mt-2
+    | タグ絞り込み： 
+    - Note.tags_on(:tags).each do |tag|
+      .form-check.form-check-inline
+        = check_box_tag "tags[]", tag.name, params[:tags] && params[:tags].include?(tag.name), class: 'form-check-input'
+        = tag.name
 
 .mt-2
   table.table.table-hover
