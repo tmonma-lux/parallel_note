@@ -8,7 +8,7 @@ class NoteForm
   attribute :text_en, :string
   attribute :text_ja, :string
   attribute :free_text, :string
-  attribute :phrases, default: {}
+  attribute :phrases, default: []
   attribute :tag_list
 
   validates :title, presence: true
@@ -17,14 +17,10 @@ class NoteForm
 
   def initialize(note = Note.new, **attributes)
     @note = note
-    # Noteモデル配下のPhraseデータをハッシュ配列に変換
-    phrase_attrs = note.phrases.map { |phrase|
-                    { expression_en: phrase.expression_en, expression_ja: phrase.expression_ja } }
-    
+
     if attributes.empty?
       attributes = { title: note.title, text_en: note.text_en, text_ja: note.text_ja,
-                     free_text: note.free_text, phrases: phrase_attrs,
-                     tag_list: note.tag_list.join(',')}
+                     free_text: note.free_text, phrases: note.phrases, tag_list: note.tag_list.join(',') }
     else
       attributes['phrases'].map!(&:symbolize_keys)
     end
@@ -42,10 +38,7 @@ class NoteForm
       # 語句とその意味がともに空欄のデータを削除
       phrases.delete_if { |phrase_attrs| phrase_attrs[:expression_en].blank? && phrase_attrs[:expression_ja].blank? }
       # 語句が存在している場合は登録
-      if phrases.present?
-        phrases.map { |phrase_attrs| phrase_attrs.store(:note_id, @note.id) }
-        Phrase.insert_all! phrases
-      end
+      insert_new_phrases
     end
     # 戻り値をif結果のfalseからtrueに変更
     true
@@ -55,14 +48,21 @@ class NoteForm
 
   private
 
+  def insert_new_phrases
+    return if phrases.empty?
+
+    phrases.map { |phrase_attrs| phrase_attrs.store(:note_id, @note.id) }
+    Phrase.insert_all! phrases
+  end
+
   def validate_phrases
     phrases.each do |phrase_attrs|
       if phrase_attrs[:expression_en].present? && phrase_attrs[:expression_ja].blank?
-        errors.add(:base,
-                   "#{NoteForm.human_attribute_name(:expression_en)}に対応する#{NoteForm.human_attribute_name(:expression_ja)}を入力してください")
+        errors.add(:base, "#{NoteForm.human_attribute_name(:expression_en)}に対応する" \
+                          "#{NoteForm.human_attribute_name(:expression_ja)}を入力してください")
       elsif phrase_attrs[:expression_en].blank? && phrase_attrs[:expression_ja].present?
-        errors.add(:base,
-                   "#{NoteForm.human_attribute_name(:expression_ja)}に対応する#{NoteForm.human_attribute_name(:expression_en)}を入力してください")
+        errors.add(:base, "#{NoteForm.human_attribute_name(:expression_ja)}に対応する" \
+                          "#{NoteForm.human_attribute_name(:expression_en)}を入力してください")
       end
     end
   end
