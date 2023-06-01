@@ -12,7 +12,6 @@ class NotesController < ApplicationController
   def search
     @notes = Note.search(params[:keyword])
     @keyword = params[:keyword]
-    render :index, status: :unprocessable_entity
   end
 
   def new
