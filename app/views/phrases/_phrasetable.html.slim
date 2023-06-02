@@ -10,4 +10,4 @@ div
         tr
           td= phrase.expression_en
           td= phrase.expression_ja
-          td= phrase.note.title
+          td= link_to phrase.note.title, note_path(phrase.note.id)
