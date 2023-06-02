@@ -6,7 +6,11 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'phrases', to: 'phrases#index'
+  resources :phrases, only: [:index] do
+    collection do
+      get :search
+    end
+  end
 
   get '*path', controller: 'application', action: 'redirect_on_404err' unless Rails.env.development?
 end
