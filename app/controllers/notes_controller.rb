@@ -9,6 +9,12 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
   end
 
+  def search
+    redirect_to notes_url if params[:query].empty? && params[:tags].nil?
+    @notes = Note.search(params[:query], params[:tags])
+    @query = params[:query]
+  end
+
   def new
     @note_form = NoteForm.new
   end
