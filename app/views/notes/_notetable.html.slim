@@ -10,7 +10,7 @@
       - Note.tags_on(:tags).most_used(15).each do |tag|
         .form-check.form-check-inline
           = check_box_tag "tags[]", tag.name, params[:tags] && params[:tags].include?(tag.name), class: 'form-check-input'
-          = tag.name
+          = "#{tag.name}(#{tag.taggings_count})"
 
 .mt-2
   table.table.table-hover
