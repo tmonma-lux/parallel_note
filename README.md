@@ -12,7 +12,7 @@
 - rspec-rails 6.0.2
 - factory_bot_rails 6.2.0
 - acts-as-taggable-on 9.0.1
-- kaminari (導入予定)
+- kaminari 1.2.2
 
 ### jQuery
 - Tag-it
