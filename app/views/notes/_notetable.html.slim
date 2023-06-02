@@ -7,7 +7,7 @@
   .row.mt-2.ms-1
     | タグ絞り込み： 
     .col
-      - Note.tags_on(:tags).each do |tag|
+      - Note.tags_on(:tags).most_used(15).each do |tag|
         .form-check.form-check-inline
           = check_box_tag "tags[]", tag.name, params[:tags] && params[:tags].include?(tag.name), class: 'form-check-input'
           = tag.name
