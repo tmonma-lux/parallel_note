@@ -1,3 +1,5 @@
 h1.mt-2 メモ検索結果
 
+= render partial: 'shared/search', locals: { url: search_notes_path, query: @query, target: Note.human_attribute_name(:title), tag_search: true }
+
 = render partial: 'notetable', locals: { notes: @notes, query: @query }
