@@ -10,7 +10,7 @@ class NotesController < ApplicationController
   end
 
   def search
-    redirect_to notes_url if params[:query].empty? && params[:tags].nil?
+    check_search_form(params[:query], params[:tags])
     @notes = Note.search(params[:query], params[:tags]).page(params[:page])
     @query = params[:query]
   end
@@ -56,5 +56,9 @@ class NotesController < ApplicationController
   def note_form_params
     params.require(:note_form).permit(:title, :text_en, :text_ja, :free_text, :tag_list,
                                       phrases: %i[expression_en expression_ja])
+  end
+
+  def check_search_form(query, tags)
+    redirect_to notes_url if query.empty? && tags.nil?
   end
 end
