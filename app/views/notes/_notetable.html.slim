@@ -13,3 +13,5 @@
           td= render "notes/taglist", tags: note.tags
           td= note.text_en.truncate(50)
           td= l note.created_at, format: :date
+
+= paginate notes
