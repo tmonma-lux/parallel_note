@@ -212,5 +212,12 @@ ja:
       short: "%m/%d %H:%M"
       date: "%Y/%m/%d"
     pm: 午後
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."
   tags_on:
     tag: タグ
