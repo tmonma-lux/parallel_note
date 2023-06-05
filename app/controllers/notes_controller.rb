@@ -2,7 +2,7 @@
 
 class NotesController < ApplicationController
   def index
-    @notes = Note.preload(:tags).page(params[:page]).per(8)
+    @notes = Note.preload(:tags).page(params[:page])
   end
 
   def show
@@ -11,7 +11,7 @@ class NotesController < ApplicationController
 
   def search
     redirect_to notes_url if params[:query].empty? && params[:tags].nil?
-    @notes = Note.search(params[:query], params[:tags])
+    @notes = Note.search(params[:query], params[:tags]).page(params[:page])
     @query = params[:query]
   end
 
