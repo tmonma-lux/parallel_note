@@ -2,7 +2,7 @@
 
 class NotesController < ApplicationController
   def index
-    @notes = Note.preload(:tags)
+    @notes = Note.preload(:tags).page(params[:page]).per(8)
   end
 
   def show
