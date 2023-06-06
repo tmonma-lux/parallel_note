@@ -10,7 +10,7 @@ class Note < ApplicationRecord
       if query == ''
         Note.tagged_with(tags, any: true)
       else
-        where('title like?', "%#{query}%") & tagged_with(tags, any: true)
+        where('title like?', "%#{query}%").tagged_with(tags, any: true)
       end
     else
       where('title like?', "%#{query}%")
