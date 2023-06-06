@@ -23,3 +23,16 @@ h2 {
 .pagination {
   justify-content: center;
 }
+
+.w-85 {
+  width: 85%;
+}
+
+.arrow {
+  width: 150px;
+  height: 15px;
+  transform: skew(45deg);
+  border-bottom: solid 2px;
+  border-right: solid 2px;
+  border-color: #999999;
+}
