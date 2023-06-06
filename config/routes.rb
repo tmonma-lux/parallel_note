@@ -12,5 +12,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/quiz', to: 'quizzes#show'
+
   get '*path', controller: 'application', action: 'redirect_on_404err' unless Rails.env.development?
 end
