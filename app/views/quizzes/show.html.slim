@@ -1,7 +1,7 @@
 h1.mt-2 語句問題
 
 - @phrases.each.with_index(1) do | phrase, idx |
-  .mt-3= "Q#{idx}."
+  .mt-2= "Q#{idx}."
   .row
     .col.d-flex.justify-content-center
       .form-control.w-85= phrase.expression_en
@@ -12,3 +12,6 @@ h1.mt-2 語句問題
   .d-flex.justify-content-end.mt-2.me-5
     = link_to phrase.note.title, note_path(phrase.note.id)
     | より
+
+.d-flex.justify-content-center.mt-4
+  = link_to '再出題', quiz_path, class: "btn btn-primary w160px"
