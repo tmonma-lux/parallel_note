@@ -8,9 +8,9 @@ class Note < ApplicationRecord
   def self.search(query, tags)
     if tags.present?
       if query == ''
-        Note.tagged_with(tags, any: true)
+        tagged_with(tags, any: true)
       else
-        where('title like?', "%#{query}%") & tagged_with(tags, any: true)
+        where('title like?', "%#{query}%").tagged_with(tags, any: true)
       end
     else
       where('title like?', "%#{query}%")
