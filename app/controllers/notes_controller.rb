@@ -11,7 +11,7 @@ class NotesController < ApplicationController
 
   def search
     check_search_form(params[:query], params[:tags])
-    @notes = Note.search(params[:query], params[:tags]).page(params[:page])
+    @notes = Note.search(params[:query], params[:tags]).preload(:tags).page(params[:page])
     @query = params[:query]
   end
 
