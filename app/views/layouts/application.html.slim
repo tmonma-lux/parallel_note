@@ -17,6 +17,7 @@ html
           li.nav-item.me-3= link_to 'メモ一覧', notes_path, class: 'nav-link'
           li.nav-item.me-3= link_to 'メモ作成', new_note_path, class: 'nav-link'
           li.nav-item.me-3= link_to '語句一覧', phrases_path, class: 'nav-link'
+          li.nav-item.me-3= link_to '語句問題', quiz_path, class: 'nav-link'
     .container
       .mt-2
         - if flash.notice.present?
