@@ -5,15 +5,15 @@ class Note < ApplicationRecord
 
   has_many :phrases, dependent: :destroy
 
-  def self.get_filtered_records(query, tags)
+  def self.get_filtered_records(search_word, tags)
     if tags.present?
-      if query == ''
+      if search_word == ''
         tagged_with(tags, any: true)
       else
-        where('title like?', "%#{query}%").tagged_with(tags, any: true)
+        where('title like?', "%#{search_word}%").tagged_with(tags, any: true)
       end
     else
-      where('title like?', "%#{query}%")
+      where('title like?', "%#{search_word}%")
     end
   end
 end
