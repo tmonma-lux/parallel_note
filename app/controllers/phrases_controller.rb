@@ -7,7 +7,7 @@ class PhrasesController < ApplicationController
 
   def search
     redirect_to phrases_url if params[:query].empty?
-    @phrases = Phrase.search(params[:query]).preload(:note).page(params[:page])
+    @phrases = Phrase.get_filtered_records(params[:query]).preload(:note).page(params[:page])
     @query = params[:query]
   end
 end

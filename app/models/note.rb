@@ -5,7 +5,7 @@ class Note < ApplicationRecord
 
   has_many :phrases, dependent: :destroy
 
-  def self.search(query, tags)
+  def self.get_filtered_records(query, tags)
     if tags.present?
       if query == ''
         tagged_with(tags, any: true)

@@ -3,7 +3,7 @@
 class Phrase < ApplicationRecord
   belongs_to :note
 
-  def self.search(query)
+  def self.get_filtered_records(query)
     where('expression_en like? OR expression_ja like?', "%#{query}%", "%#{query}%")
   end
 end
