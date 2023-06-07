@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/phrase_quiz', to: 'phrase_quiz#index'
+  get '/phrase_quizzes', to: 'phrase_quizzes#index'
 
   get '*path', controller: 'application', action: 'redirect_on_404err' unless Rails.env.development?
 end
