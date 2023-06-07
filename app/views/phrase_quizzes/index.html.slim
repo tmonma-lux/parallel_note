@@ -1,0 +1,23 @@
+.row
+  h1.col.mt-2 語句問題
+
+  .col.d-flex.justify-content-end.mt-4.me-5
+    = link_to '英語⇔日本語', phrase_quizzes_path(question_language: (@question_language == 'en' ? 'ja' : 'en')), class: "btn btn-primary"
+
+- @phrases.each.with_index(1) do | phrase, idx |
+  .mt-2= "Q#{idx}."
+  .row
+    .col.d-flex.justify-content-center
+      .form-control.w-85
+        = @question_language == 'en' ? phrase.expression_en : phrase.expression_ja
+    .col-2.d-flex.justify-content-center.pt-2
+      .arrow
+    .col.d-flex.justify-content-center
+      .form-control.w-85.mask-answer data-answer="#{@question_language == 'en' ? phrase.expression_ja : phrase.expression_en}"
+        | クリックで解答を表示
+  .d-flex.justify-content-end.mt-2.me-5
+    = link_to phrase.note.title, note_path(phrase.note.id)
+    | より
+
+.d-flex.justify-content-center.mt-5
+  = link_to '問題を更新', phrase_quizzes_path(question_language: @question_language), class: "btn btn-success w160px"
