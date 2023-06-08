@@ -11,8 +11,10 @@ class NoteForm
   attribute :phrases, default: []
   attribute :tag_list
 
-  validates :title, presence: true
-  validates :text_en, presence: true
+  with_options presence: true do
+    validates :title
+    validates :text_en
+  end
   validate :validate_phrases
 
   def initialize(note = Note.new, **attributes)

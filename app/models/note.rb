@@ -6,14 +6,9 @@ class Note < ApplicationRecord
   has_many :phrases, dependent: :destroy
 
   def self.get_filtered_records(search_word, tags)
-    if tags.present?
-      if search_word == ''
-        tagged_with(tags, any: true)
-      else
-        where('title like?', "%#{search_word}%").tagged_with(tags, any: true)
-      end
-    else
-      where('title like?', "%#{search_word}%")
-    end
+    query = self.all
+    query = query.where('title LIKE :search_word', search_word: "%#{search_word}%") if search_word.present?
+    query = query.tagged_with(tags, any: true) if tags.present?
+    query
   end
 end
