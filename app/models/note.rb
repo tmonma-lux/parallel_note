@@ -10,10 +10,10 @@ class Note < ApplicationRecord
       if search_word.empty?
         tagged_with(tags, any: true)
       else
-        where('title like?', "%#{search_word}%").tagged_with(tags, any: true)
+        where('title LIKE :search_word', search_word: "%#{search_word}%").tagged_with(tags, any: true)
       end
     else
-      where('title like?', "%#{search_word}%")
+      where('title LIKE :search_word', search_word: "%#{search_word}%")
     end
   end
 end
