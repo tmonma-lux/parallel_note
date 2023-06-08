@@ -7,7 +7,7 @@ class Note < ApplicationRecord
 
   def self.get_filtered_records(search_word, tags)
     if tags.present?
-      if search_word == ''
+      if search_word.empty?
         tagged_with(tags, any: true)
       else
         where('title like?', "%#{search_word}%").tagged_with(tags, any: true)
