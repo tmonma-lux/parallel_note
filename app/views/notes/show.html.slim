@@ -1,37 +1,38 @@
 .d-flex.justify-content-between.mt-2
-  h1= @note.title
+  h1 = @note.title
   .mt-2
-    = link_to "編集", edit_note_path, class: "btn btn-primary me-3 w80px"
-    = link_to "削除", @note, data: { turbo_method: :delete, turbo_confirm: "メモを削除します。よろしいですか？" }, class: "btn btn-danger w80px"
+    = link_to '編集', edit_note_path, class: 'btn btn-primary me-3 w80px'
+    = link_to '削除', @note, data: { turbo_method: :delete, turbo_confirm: 'メモを削除します。よろしいですか？' },
+              class: 'btn btn-danger w80px'
 
 .d-flex.flex-row
   | タグ：
-  = render "notes/taglist", tags: @note.tags
+  = render 'notes/taglist', tags: @note.tags
 
 .row.mt-4
   .col
-    .text-center.h2= Note.human_attribute_name(:text_en)
+    .text-center.h2 = Note.human_attribute_name(:text_en)
   .col
-    .text-center.h2= Note.human_attribute_name(:text_ja)
+    .text-center.h2 = Note.human_attribute_name(:text_ja)
 .row
   .col.flex
-    .form-control= simple_format(h(@note.text_en))
+    .form-control = simple_format(h(@note.text_en))
   .col.flex
-    .form-control= simple_format(h(@note.text_ja))
+    .form-control = simple_format(h(@note.text_ja))
 
-div.mt-4
-    .h2= NoteForm.human_attribute_name(:phrases)
+.mt-4
+    .h2 = NoteForm.human_attribute_name(:phrases)
     - @note.phrases.each do |phrase|
       .row.mt-3
         .col
-          .form-control= phrase.expression_en
+          .form-control = phrase.expression_en
         .col
-          .form-control= phrase.expression_ja
+          .form-control = phrase.expression_ja
 
-div.my-4
-  .h2= Note.human_attribute_name(:free_text)
+.my-4
+  .h2 = Note.human_attribute_name(:free_text)
   .form-control
     - if @note.free_text.present?
       = simple_format(h(@note.free_text))
     - else
-      .gray_text= "記入なし"
+      .gray_text = '記入なし'
