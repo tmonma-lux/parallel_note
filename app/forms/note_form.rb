@@ -62,14 +62,14 @@ class NoteForm
   def validate_phrases
     phrases.each do |phrase_attrs|
       if phrase_attrs[:expression_en].present? && phrase_attrs[:expression_ja].blank?
-        add_phrase_blank_err(:expression_en, :expression_ja)
+        add_invalid_phrase_error(:expression_en, :expression_ja)
       elsif phrase_attrs[:expression_en].blank? && phrase_attrs[:expression_ja].present?
-        add_phrase_blank_err(:expression_ja, :expression_en)
+        add_invalid_phrase_error(:expression_ja, :expression_en)
       end
     end
   end
 
-  def add_phrase_blank_err(attr1, attr2)
+  def add_invalid_phrase_error(attr1, attr2)
     errors.add(:base, "#{NoteForm.human_attribute_name(attr1)}に対応する" \
                       "#{NoteForm.human_attribute_name(attr2)}を入力してください")
   end
