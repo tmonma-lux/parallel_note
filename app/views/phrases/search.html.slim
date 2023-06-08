@@ -1,5 +1,6 @@
 h1.mt-2 語句検索結果
 
-= render partial: 'shared/search', locals: { url: search_phrases_path, query: @query, target: 'キーワード', tag_search: false }
+= render partial: 'shared/search',
+         locals: { url: search_phrases_path, query: @query, target: 'キーワード', tag_search: false }
 
-= render partial: 'phrasetable', locals: { phrases: @phrases}
+= render partial: 'phrasetable', locals: { phrases: @phrases }
