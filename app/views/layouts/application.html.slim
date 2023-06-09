@@ -11,7 +11,7 @@ html
   body
     header
       nav.navbar.navbar-expand-md.navbar-light
-        .navbar-brand.px-3 ParallelNote
+        = image_tag 'logo.png', size: '160x30', class: 'mx-3'
 
         ul.navbar-nav.ms-2
           li.nav-item.me-3 = link_to 'メモ一覧', notes_path, class: 'nav-link'
