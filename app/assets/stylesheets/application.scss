@@ -1,31 +1,5 @@
 @import "bootstrap";
 
-.gray_text {
-  color: gray;
-}
-
-.mask-answer {
-  text-align: center;
-  background-color: #ddd;
-}
-
-.flex {
-  display: flex;
-}
-
-.pagination {
-  justify-content: center;
-}
-
-.arrow {
-  width: 150px;
-  height: 15px;
-  transform: skew(45deg);
-  border-bottom: solid 2px;
-  border-right: solid 2px;
-  border-color: #999999;
-}
-
 /* Application */
 body {
   background-color: #fafafa;
@@ -47,6 +21,37 @@ thead {
   font-size: 32px;
   margin: 14px 0;
 }
+
+.pagination {
+  justify-content: center;
+}
+
+
+/* Note Show */
+.flex {
+  display: flex;
+}
+
+.gray_text {
+  color: gray;
+}
+
+
+/* Phrase Quiz */
+.arrow {
+  width: 150px;
+  height: 15px;
+  transform: skew(45deg);
+  border-bottom: solid 2px;
+  border-right: solid 2px;
+  border-color: #999999;
+}
+
+.mask-answer {
+  text-align: center;
+  background-color: #ddd;
+}
+
 
 /* Sizing */
 .w-10 {
