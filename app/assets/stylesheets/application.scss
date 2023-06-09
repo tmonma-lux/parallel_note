@@ -8,10 +8,6 @@ h2 {
   font-size: 24px;
 }
 
-.navbar {
-  background-color: #c9daf8;
-}
-
 .gray_text {
   color: gray;
 }
@@ -52,4 +48,13 @@ h2 {
   border-bottom: solid 2px;
   border-right: solid 2px;
   border-color: #999999;
+}
+
+/* Application */
+body {
+  background-color: #fafafa;
+}
+
+.navbar {
+  background-color: #c8c8cf;
 }
