@@ -9,10 +9,12 @@
 ### Gem
 - slim-rails 3.6.2
 - bootstrap 5.2.3
-- rspec-rails 6.0.2
-- factory_bot_rails 6.2.0
 - acts-as-taggable-on 9.0.1
 - kaminari 1.2.2
+- rubocop 1.51.0
+- slim_lint 0.24.0
+- rspec-rails 6.0.2
+- factory_bot_rails 6.2.0
 
 ### jQuery
 - Tag-it

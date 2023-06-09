@@ -6,4 +6,5 @@
 ## 画面
 
 ## レビュー前チェック
-- [　] RuboCop実行
+- [ ] RuboCop実行
+- [ ] slim-lint実行

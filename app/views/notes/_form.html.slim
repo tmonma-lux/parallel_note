@@ -1,41 +1,43 @@
 - if note_form.errors.present?
     ul
       - note_form.errors.full_messages.each do |message|
-        li= message
+        li = message
 
-= form_with model: note_form, url: url, method: method, local: true do |f|
+= form_with model: note_form, url:, method:, local: true do |f|
   .row.mt-3
     .col
-      = f.text_field :title, class: "form-control", placeholder: "タイトルを入力してください"
-    = f.submit '保存', class: "btn btn-primary me-2", style: "width:100px"
+      = f.text_field :title, class: 'form-control', placeholder: 'タイトルを入力してください'
+    = f.submit '保存', class: 'btn btn-primary w100px me-2'
 
   .row.mt-3
     .col-1.d-flex.align-items-center
       | タグ：
     .col-6
-      = f.text_field :tag_list, class: "form-control", class: "col-6 form-control"
+      = f.text_field :tag_list, class: 'form-control'
 
   .row.mt-4
     .col
       .text-center.h2
         = f.label :text_en, Note.human_attribute_name(:text_en)
-      = f.text_area :text_en, rows: 10, style: "width:100%", class: "form-control"
+      = f.text_area :text_en, rows: 10, class: 'form-control'
     .col
       .text-center.h2
         = f.label :text_ja, Note.human_attribute_name(:text_ja)
-      = f.text_area :text_ja, rows: 10, style: "width:100%", class: "form-control"
+      = f.text_area :text_ja, rows: 10, class: 'form-control'
 
-  div.mt-4
+  .mt-4
     .h2
       = NoteForm.human_attribute_name(:phrases)
     - 3.times do |idx|
       .row.mt-3
         .col
-          = f.text_field 'phrases[][expression_en]', class: "form-control", value: (note_form.phrases[idx][:expression_en] if note_form.phrases[idx].present?)
+          = f.text_field 'phrases[][expression_en]', class: 'form-control',
+                         value: (note_form.phrases[idx][:expression_en] if note_form.phrases[idx].present?)
         .col
-          = f.text_field 'phrases[][expression_ja]', class: "form-control", value: (note_form.phrases[idx][:expression_ja] if note_form.phrases[idx].present?)
+          = f.text_field 'phrases[][expression_ja]', class: 'form-control',
+                         value: (note_form.phrases[idx][:expression_ja] if note_form.phrases[idx].present?)
 
-  div.my-4
+  .my-4
     .h2
       = f.label :free_text, Note.human_attribute_name(:free_text)
-    = f.text_area :free_text, rows: 4, class: "form-control"
+    = f.text_area :free_text, rows: 4, class: 'form-control'
