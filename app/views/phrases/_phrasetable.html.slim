@@ -1,8 +1,8 @@
 table.table.table-hover.my-4
   thead
     tr
-      th = Phrase.human_attribute_name(:expression_en)
-      th = Phrase.human_attribute_name(:expression_ja)
+      th.w-35 = Phrase.human_attribute_name(:expression_en)
+      th.w-35 = Phrase.human_attribute_name(:expression_ja)
       th メモタイトル
   tbody
     - phrases.each do |phrase|

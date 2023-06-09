@@ -1,10 +1,10 @@
 table.table.table-hover.mt-3.mb-4
   thead
     tr
-      th = Note.human_attribute_name(:title)
-      th = I18n.t('tags_on.tag')
+      th.w-25 = Note.human_attribute_name(:title)
+      th.w-20 = I18n.t('tags_on.tag')
       th = "#{Note.human_attribute_name(:text_en)}プレビュー"
-      th = Note.human_attribute_name(:created_at)
+      th.w-10 = Note.human_attribute_name(:created_at)
   tbody
     - notes.each do |note|
       tr
