@@ -5,7 +5,7 @@
     = link_to '削除', @note, data: { turbo_method: :delete, turbo_confirm: 'メモを削除します。よろしいですか？' },
               class: 'btn btn-danger w80px'
 
-.d-flex.flex-row
+.d-flex
   | タグ：
   = render 'notes/taglist', tags: @note.tags
 

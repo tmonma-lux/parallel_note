@@ -5,17 +5,15 @@
 
 = form_with model: note_form, url:, method:, local: true do |f|
   .mt-3
-    .row
-      .col-8
-        = f.text_field :title, class: 'form-control', placeholder: 'タイトルを入力してください'
+    .flex
+      = f.text_field :title, class: 'form-control w-60 me-3', placeholder: 'タイトルを入力してください'
       = f.submit '保存', class: 'btn btn-primary w100px me-2'
 
   .mt-3
-    .row
-      .col-1.f20px.d-flex.align-items-center
+    .flex
+      .f20px.d-flex.align-items-center.me-3
         | タグ：
-      .col-5
-        = f.text_field :tag_list, class: 'form-control'
+      = f.text_field :tag_list, class: 'form-control w-40'
 
   .mt-4
     .f24px = NoteForm.human_attribute_name(:text)
