@@ -1,6 +1,8 @@
 .page-title タグ検索結果
 
-= render partial: 'shared/search',
-         locals: { url: search_tags_path, query: @query, target: 'キーワード', tag_search: false }
+.d-flex.justify-content-center
+  .w-80.pt-0
+    = render partial: 'shared/search',
+            locals: { url: search_tags_path, query: @query, target: 'キーワード', tag_search: false }
 
-= render partial: 'tagtable', locals: { tags: @tags }
+    = render partial: 'tagtable', locals: { tags: @tags }
