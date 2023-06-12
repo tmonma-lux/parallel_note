@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TagsController < ApplicationController
   def index
     @tags = Note.tag_counts_on(:tags).page(params[:page])
@@ -13,7 +15,7 @@ class TagsController < ApplicationController
   def search
     redirect_to tags_url if params[:query].empty?
     @tags = Note.tag_counts_on(:tags).where('name LIKE :search_word', search_word: "%#{params[:query]}%")
-          .page(params[:page])
+                .page(params[:page])
     @query = params[:query]
   end
 end
