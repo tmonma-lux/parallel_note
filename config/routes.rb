@@ -14,5 +14,7 @@ Rails.application.routes.draw do
 
   get '/phrase_quizzes', to: 'phrase_quizzes#index'
 
+  get '/tags', to: 'tags#index'
+
   get '*path', controller: 'application', action: 'redirect_on_404error' unless Rails.env.development?
 end
