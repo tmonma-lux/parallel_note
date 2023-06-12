@@ -1,18 +1,19 @@
 .page-title タグ一覧
 
-table.table.table-hover.my-4
-  thead
-    tr
-      th = I18n.t('tags_on.tag')
-      th.w-25 メモ数
-      th.w-10
-  tbody
-    - @tags.each do |tag|
+.d-flex.justify-content-center
+  table.table.table-hover.my-4.w-85
+    thead
       tr
-        td = tag.name
-        td = tag.taggings_count
-        td = link_to '削除', tag_path(tag),
-             data: { turbo_method: :delete, turbo_confirm: "タグ「#{tag.name}」を削除します。よろしいですか？" },
-             class: 'btn btn-danger py-1 w80px'
+        th = I18n.t('tags_on.tag')
+        th.w-20 メモ数
+        th.w-15
+    tbody
+      - @tags.each do |tag|
+        tr
+          td = tag.name
+          td = tag.taggings_count
+          td = link_to '削除', tag_path(tag),
+              data: { turbo_method: :delete, turbo_confirm: "タグ「#{tag.name}」を削除します。よろしいですか？" },
+              class: 'btn btn-danger py-1 w80px'
 
 = paginate @tags
