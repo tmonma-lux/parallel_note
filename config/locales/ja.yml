@@ -30,6 +30,7 @@ ja:
     attributes:
       note_form:
         title: タイトル
+        text: テキスト
         text_en: 原文
         text_ja: 対訳
         free_text: 自由欄

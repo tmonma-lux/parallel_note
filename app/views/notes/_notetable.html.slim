@@ -1,17 +1,16 @@
-.mt-2
-  table.table.table-hover
-    thead
+table.table.table-hover.mt-3.mb-4
+  thead
+    tr
+      th.w-25 = Note.human_attribute_name(:title)
+      th.w-20 = I18n.t('tags_on.tag')
+      th = "#{Note.human_attribute_name(:text_en)}プレビュー"
+      th.w-10 = Note.human_attribute_name(:created_at)
+  tbody
+    - notes.each do |note|
       tr
-        th = Note.human_attribute_name(:title)
-        th = I18n.t('tags_on.tag')
-        th = "#{Note.human_attribute_name(:text_en)}プレビュー"
-        th = Note.human_attribute_name(:created_at)
-    tbody
-      - notes.each do |note|
-        tr
-          td = link_to note.title, note
-          td = render 'notes/taglist', tags: note.tags
-          td = note.text_en.truncate(50)
-          td = l note.created_at, format: :date
+        td = link_to note.title, note
+        td = render 'notes/taglist', tags: note.tags
+        td = note.text_en.truncate(50)
+        td = l note.created_at, format: :date
 
 = paginate notes
