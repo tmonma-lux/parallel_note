@@ -1,0 +1,12 @@
+.page-title タグ一覧
+
+table.table.table-hover.my-4
+  thead
+    tr
+      th = I18n.t('tags_on.tag')
+      th.w-25 メモ数
+  tbody
+    - @tags.each do |tag|
+      tr
+        td = tag.name
+        td = tag.taggings_count
