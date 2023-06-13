@@ -1,0 +1,14 @@
+table.table.table-hover.my-4
+  thead
+    tr
+      th = I18n.t('tags_on.tag')
+      th.w-25
+  tbody
+    - tags.each do |tag|
+      tr
+        td = "#{tag.name}（#{tag.taggings_count}）"
+        td.text-end.pe-4 = link_to '削除', tag_path(tag),
+            data: { turbo_method: :delete, turbo_confirm: "タグ「#{tag.name}」を削除します。よろしいですか？" },
+            class: 'btn btn-danger py-1 w80px'
+
+= paginate tags

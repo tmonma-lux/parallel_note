@@ -17,6 +17,14 @@ thead {
   background-color: #e6e6e9;
 }
 
+th, td {
+  vertical-align: middle;
+}
+
+td {
+  height: 50px;
+}
+
 .page-title {
   font-size: 32px;
   margin: 14px 0;
@@ -59,50 +67,62 @@ thead {
 
 
 /* Sizing */
+/* for notes/_notetable.html.slim */
 .w-10 {
   width: 10%
 }
 
+/* for notes/_notetable.html.slim */
 .w-20 {
   width: 20%
 }
 
+/* for app/views/phrases/_phrasetable.html.slim */
 .w-35 {
   width: 35%
 }
 
+/* for notes/_form.html.slim, app/views/shared/_search.html.slim */
 .w-40 {
   width: 40%
 }
 
+/* for notes/_form.html.slim */
 .w-60 {
   width: 60%
 }
 
+/* for app/views/phrase_quizzes/index.html.slim */
 .w-85 {
   width: 85%;
 }
 
+/* for Buttons */
 .w80px {
   width: 80px;
 }
 
+/* for Buttons */
 .w100px {
   width: 100px;
 }
 
+/* for Buttons */
 .w160px {
   width: 160px;
 }
 
+/* for Texts */
 .f18px {
   font-size: 18px;
 }
 
+/* for Texts */
 .f20px {
   font-size: 20px;
 }
 
+/* for Texts */
 .f24px {
   font-size: 24px;
 }
