@@ -33,7 +33,7 @@
       .col.text-center.f20px 単語・熟語
       .col.text-center.f20px 意味
     .phrase-forms
-      - 3.times do |idx|
+      - [3, note_form.phrases.length].max.times do |idx|
         .row.mb-3
           .col
             = f.text_field 'phrases[][expression_en]', class: 'form-control',
