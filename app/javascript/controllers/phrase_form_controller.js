@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="phraseform"
+// Connects to data-controller="phrase-form"
 export default class extends Controller {
   static targets = ["form_wrapper"];
 

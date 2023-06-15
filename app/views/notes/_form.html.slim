@@ -27,12 +27,12 @@
           = f.label :text_ja, Note.human_attribute_name(:text_ja)
         = f.text_area :text_ja, rows: 10, class: 'form-control'
 
-  .mt-4 data-controller="phraseform"
+  .mt-4 data-controller="phrase-form"
     .f24px = NoteForm.human_attribute_name(:phrases)
     .row.mb-2
       .col.text-center.f20px 単語・熟語
       .col.text-center.f20px 意味
-    div data-phraseform-target="form_wrapper"
+    div data-phrase-form-target="form_wrapper"
       - [3, note_form.phrases.length].max.times do |idx|
         .row.mb-3
           .col
@@ -43,7 +43,7 @@
                           value: (note_form.phrases[idx][:expression_ja] if note_form.phrases[idx].present?)
 
     .d-flex.justify-content-center.mt27px
-      button.btn.btn-success.w160px type="button" data-action="click->phraseform#addRow" さらに追加
+      button.btn.btn-success.w160px type="button" data-action="click->phrase-form#addRow" さらに追加
 
   .my-4
     .f24px.mb-2 = f.label :free_text, Note.human_attribute_name(:free_text)
