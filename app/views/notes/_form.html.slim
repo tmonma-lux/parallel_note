@@ -32,17 +32,18 @@
     .row.mb-2
       .col.text-center.f20px 単語・熟語
       .col.text-center.f20px 意味
-    - 3.times do |idx|
-      .row.mb-3
-        .col
-          = f.text_field 'phrases[][expression_en]', class: 'form-control',
-                         value: (note_form.phrases[idx][:expression_en] if note_form.phrases[idx].present?)
-        .col
-          = f.text_field 'phrases[][expression_ja]', class: 'form-control',
-                         value: (note_form.phrases[idx][:expression_ja] if note_form.phrases[idx].present?)
+    .phrase-forms
+      - 3.times do |idx|
+        .row.mb-3
+          .col
+            = f.text_field 'phrases[][expression_en]', class: 'form-control',
+                          value: (note_form.phrases[idx][:expression_en] if note_form.phrases[idx].present?)
+          .col
+            = f.text_field 'phrases[][expression_ja]', class: 'form-control',
+                          value: (note_form.phrases[idx][:expression_ja] if note_form.phrases[idx].present?)
     
     .d-flex.justify-content-center
-      button.btn.btn-success.w160px type="button" さらに追加
+      button.btn.btn-success.w160px type="button" id="add-phrase-button" さらに追加
 
   .my-4
     .f24px.mb-2 = f.label :free_text, Note.human_attribute_name(:free_text)
