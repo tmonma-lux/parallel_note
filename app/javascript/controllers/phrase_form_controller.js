@@ -2,11 +2,11 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="phrase-form"
 export default class extends Controller {
-  static targets = ["form_wrapper"];
+  static targets = ["formWrapper"];
 
   addRow() {
     const row = this._createRow();
-    this.form_wrapperTarget.appendChild(row);
+    this.formWrapperTarget.appendChild(row);
   }
 
   _createRow() {
