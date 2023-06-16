@@ -4,3 +4,8 @@ import "controllers"
 
 import "./src/jquery"
 import "jquery-ui-dist";
+import "./tag-it"
+
+$(function() {
+  $(".tag_form").tagit();
+})

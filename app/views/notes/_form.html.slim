@@ -13,7 +13,7 @@
     .flex
       .f20px.d-flex.align-items-center.me-3
         | タグ：
-      = f.text_field :tag_list, class: 'form-control w-40'
+      = f.text_field :tag_list, class: 'tag_form'
 
   .mt-4
     .f24px = NoteForm.human_attribute_name(:text)
