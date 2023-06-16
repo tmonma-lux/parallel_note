@@ -7,7 +7,7 @@
 
 - @phrases.each.with_index(1) do |phrase, idx|
   .f24px = "Q#{idx}."
-  .row
+  .row data-controller='quiz-answer'
     .col.d-flex.justify-content-center
       .form-control.f18px.w-85
         = @question_language == 'en' ? phrase.expression_en : phrase.expression_ja
@@ -16,6 +16,7 @@
     .col.d-flex.justify-content-center
       .form-control.f18px.w-85.mask-answer[
         data-answer="#{@question_language == 'en' ? phrase.expression_ja : phrase.expression_en}"
+        data-action='click->quiz-answer#revealAnswer'
       ]
         | クリックで解答を表示
   .d-flex.justify-content-end.mt-2.me-5
