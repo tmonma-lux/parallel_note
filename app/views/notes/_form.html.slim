@@ -5,10 +5,9 @@
           li = message
 
 = form_with model: note_form, url:, method:, local: true do |f|
-  .mt-3
-    .flex
-      = f.text_field :title, class: 'form-control w-60 me-3', placeholder: 'タイトルを入力してください'
-      = f.submit '保存', class: 'btn btn-primary w100px me-2'
+  .row.mt-3
+    .col-7 = f.text_field :title, class: 'form-control', placeholder: 'タイトルを入力してください'
+    = f.submit '保存', class: 'btn btn-primary w100px ms-2'
 
   .mt-3
     .flex
