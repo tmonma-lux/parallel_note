@@ -173,7 +173,7 @@
 
             this.tagList
                 .addClass('tagit')
-                .addClass('ui-widget ui-widget-content ui-corner-all')
+                .addClass('ui-widget ui-widget-content ui-corner-all form-control w-auto')
                 // Create the input field.
                 .append($('<li class="tagit-new"></li>').append(this.tagInput))
                 .click(function(e) {
