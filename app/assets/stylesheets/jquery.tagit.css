@@ -3,7 +3,6 @@ ul.tagit {
     overflow: auto;
     margin-left: inherit; /* usually we don't want the regular ul margins. */
     margin-right: inherit;
-    margin-bottom: auto;
 }
 ul.tagit li {
     display: block;
@@ -64,7 +63,7 @@ ul.tagit input[type="text"] {
     border: none;
     margin: 0;
     padding: 0;
-    width: 400px;
+    width: inherit;
     background-color: inherit;
     outline: none;
 }

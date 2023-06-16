@@ -137,3 +137,19 @@ td {
 .mt27px {
   margin-top: 27px;
 }
+
+
+/* tag-it overwrite */
+ul.tagit {
+  border-color: #ced4da;
+  background: #fff;
+  margin-bottom: auto;
+}
+
+ul.tagit input[type="text"] {
+  width: 400px;
+}
+
+.ui-widget {	
+  font-size: initial;	
+}

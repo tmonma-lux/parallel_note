@@ -8,5 +8,6 @@ export default class extends Controller {
   connect() {
     const tagForm = this.element.querySelector("#tag_field");
     $(tagForm).tagit();
+    $("ul.tagit").addClass('form-control w-auto');
   }
 }
