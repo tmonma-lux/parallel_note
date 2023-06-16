@@ -1,7 +1,8 @@
 - if note_form.errors.present?
-    ul
-      - note_form.errors.full_messages.each do |message|
-        li = message
+    ul.alert.alert-danger.mt-2
+      .ps-3
+        - note_form.errors.full_messages.each do |message|
+          li = message
 
 = form_with model: note_form, url:, method:, local: true do |f|
   .mt-3
