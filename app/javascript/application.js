@@ -1,11 +1,3 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "@hotwired/turbo-rails"
 import "controllers"
-
-import "./src/jquery"
-import "jquery-ui-dist";
-import "./tag-it"
-
-$(document).on("turbo:load", function(){
-  $(".tag_form").tagit();
-})

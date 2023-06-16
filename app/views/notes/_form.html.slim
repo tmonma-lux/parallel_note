@@ -9,11 +9,11 @@
     .col-7 = f.text_field :title, class: 'form-control', placeholder: 'タイトルを入力してください'
     = f.submit '保存', class: 'btn btn-primary w100px ms-2'
 
-  .mt-3
+  .mt-3 data-controller='tag-form'
     .flex
       .f20px.d-flex.align-items-center.me-3
         | タグ：
-      = f.text_field :tag_list, class: 'tag_form'
+      = f.text_field :tag_list, id: 'tag_field'
 
   .mt-4
     .f24px = NoteForm.human_attribute_name(:text)
