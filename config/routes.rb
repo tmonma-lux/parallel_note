@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   resources :notes do
     collection do
       get :search
+      get :fetch_tag_suggestions, defaults: { format: 'json' }
+    end
+    member do
+      get :fetch_tag_suggestions, defaults: { format: 'json' }
     end
   end
 
