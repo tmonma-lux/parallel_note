@@ -15,6 +15,10 @@ class NotesController < ApplicationController
     @query = params[:query]
   end
 
+  def fetch_tag_suggestions
+    @tags = Note.tag_counts_on(:tags).where('name LIKE :tag_input', tag_input: "#{params[:tag_input]}%")
+  end
+
   def new
     @note_form = NoteForm.new
   end
