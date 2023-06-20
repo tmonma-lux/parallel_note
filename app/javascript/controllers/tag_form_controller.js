@@ -30,7 +30,10 @@ export default class extends Controller {
           });
           $('.tagit-autocomplete.ui-widget-content').addClass('form-control');
         }
-      });
+      })
+      .fail(function(){
+        $('.tag_form_error').text('タグ入力時にエラーが発生しました。');
+      })
     });
   }
 }

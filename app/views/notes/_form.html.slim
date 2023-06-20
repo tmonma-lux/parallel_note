@@ -14,6 +14,7 @@
       .f20px.d-flex.align-items-center.me-3
         | タグ：
       = f.text_field :tag_list, id: 'tag_field'
+    .tag_form_error.mt-1
 
   .mt-4
     .f24px = NoteForm.human_attribute_name(:text)
