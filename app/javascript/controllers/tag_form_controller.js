@@ -28,6 +28,7 @@ export default class extends Controller {
           $(tagForm).tagit({
             availableTags: tag_list
           });
+          $('.tagit-autocomplete.ui-widget-content').addClass('form-control');
         }
       });
     });

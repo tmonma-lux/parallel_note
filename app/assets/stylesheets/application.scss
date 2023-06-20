@@ -153,3 +153,13 @@ ul.tagit input[type="text"] {
 .ui-widget {	
   font-size: initial;	
 }
+
+.tagit-autocomplete.ui-widget-content {
+  border-color: #ced4da;
+  width: 400px;
+}
+
+.ui-state-active {
+  border: none !important;
+  background-color: #e5e5e5 !important;
+}
