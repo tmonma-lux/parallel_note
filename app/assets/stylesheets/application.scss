@@ -1,4 +1,6 @@
 @import "bootstrap";
+@import "jquery.tagit";
+@import "tagit.ui-zendesk";
 
 /* Application */
 body {
@@ -97,6 +99,10 @@ td {
   width: 85%;
 }
 
+.w-auto {
+  width: auto;
+}
+
 /* for Buttons */
 .w80px {
   width: 80px;
@@ -130,4 +136,20 @@ td {
 /* for notes/_form.html.slim */
 .mt27px {
   margin-top: 27px;
+}
+
+
+/* tag-it overwrite */
+ul.tagit {
+  border-color: #ced4da;
+  background: #fff;
+  margin-bottom: auto;
+}
+
+ul.tagit input[type="text"] {
+  width: 400px;
+}
+
+.ui-widget {	
+  font-size: initial;	
 }
