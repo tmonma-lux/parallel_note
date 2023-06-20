@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 import "../src/jquery"
-import "jquery-ui-dist";
+import "jquery-ui-dist"
 import "../tag-it"
 
 // Connects to data-controller="tag-form"
