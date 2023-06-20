@@ -31,8 +31,8 @@ export default class extends Controller {
           $('.tagit-autocomplete.ui-widget-content').addClass('form-control');
         }
       })
-      .fail(function(){
-        $('.tag_form_error').text('タグ入力時にエラーが発生しました。');
+      .fail(function(jqXHR, textStatus, errorThrown){
+        $('.tag_form_error').text(`タグ入力時にエラーが発生しました。（${jqXHR.status} ${errorThrown}）`);
       })
     });
   }
